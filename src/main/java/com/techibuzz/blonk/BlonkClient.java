@@ -3,6 +3,7 @@ package com.techibuzz.blonk;
 import com.techibuzz.blonk.entity.ModEntities;
 import com.techibuzz.blonk.entity.client.model.*;
 import com.techibuzz.blonk.entity.client.renderer.ShellRenderer;
+import com.techibuzz.blonk.entity.client.renderer.TonkRenderer;
 import com.techibuzz.blonk.screen.ModScreens;
 import com.techibuzz.blonk.screen.custom.BlonkScreen;
 import net.fabricmc.api.ClientModInitializer;
@@ -35,6 +36,9 @@ public class BlonkClient implements ClientModInitializer {
 
         EntityRenderers.register(ModEntities.SMOKE_SHELL,context -> new ShellRenderer(context, new SmokeShellModel(context.bakeLayer(SmokeShellModel.SMOKE_SHELL)), Identifier.fromNamespaceAndPath(Blonk.MOD_ID, "textures/entity/shell/smoke_shell.png")));
         EntityModelLayerRegistry.registerModelLayer(SmokeShellModel.SMOKE_SHELL, SmokeShellModel::getTexturedModelData);
+
+        EntityRenderers.register(ModEntities.TONK, context -> new TonkRenderer(context, new TonkModel(context.bakeLayer(TonkModel.TONK))));
+        EntityModelLayerRegistry.registerModelLayer(TonkModel.TONK, TonkModel::getTexturedModelData);
 
         MenuScreens.register(ModScreens.BLONK_SCREEN_HANDLER, BlonkScreen::new);
     }

@@ -2,6 +2,7 @@ package com.techibuzz.blonk.entity;
 
 import com.techibuzz.blonk.Blonk;
 import com.techibuzz.blonk.entity.custom.*;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -47,7 +48,15 @@ public class ModEntities {
             EntityType.Builder.<Shell>of(SmokeShell::new, MobCategory.MISC).sized(4/16F, 4/16F).build(SMOKE_SHELL_KEY)
     );
 
+    private static final ResourceKey<@NotNull EntityType<?>> TONK_KEY = ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(Blonk.MOD_ID, "tonk"));
+    public static final EntityType<@NotNull Tonk> TONK = Registry.register(
+            BuiltInRegistries.ENTITY_TYPE, TONK_KEY,
+            EntityType.Builder.<Tonk>of(Tonk::new, MobCategory.CREATURE).sized(8/16F, 5/16F).build(TONK_KEY)
+    );
+
     public static void registerModEntities() {
+        FabricDefaultAttributeRegistry.register(TONK, Tonk.createAttributes());
+
         Blonk.LOGGER.info("Registering Entities for - " + Blonk.MOD_ID);
     }
 }
