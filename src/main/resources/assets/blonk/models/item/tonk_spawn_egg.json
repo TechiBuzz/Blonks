@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "blonk:item/smoke_shell"
+    "layer0": "blonk:item/tonk_spawn_egg"
   }
 }

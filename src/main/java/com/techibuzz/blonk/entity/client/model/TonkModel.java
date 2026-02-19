@@ -13,6 +13,8 @@ import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 
+import java.util.Objects;
+
 public class TonkModel extends EntityModel<TonkRenderState> {
     public static final ModelLayerLocation TONK = new ModelLayerLocation(Identifier.fromNamespaceAndPath(Blonk.MOD_ID, "tonk"), "main");
 
@@ -25,11 +27,13 @@ public class TonkModel extends EntityModel<TonkRenderState> {
     private final ModelPart right;
 
     private final KeyframeAnimation idleAnimation;
+    private final KeyframeAnimation walkAnimation;
 
     public TonkModel(ModelPart root) {
-        super(root, RenderTypes::entityCutout);
+        super(root, RenderTypes::entityCutoutNoCull);
 
         this.tonk = root.getChild("tonk");
+
         this.body = this.tonk.getChild("body");
         this.center = this.body.getChild("center");
         this.head = this.body.getChild("head");
@@ -38,6 +42,7 @@ public class TonkModel extends EntityModel<TonkRenderState> {
         this.right = this.wheels.getChild("right");
 
         this.idleAnimation = ModAnimations.TONK_IDLE.bake(root);
+        this.walkAnimation = ModAnimations.TONK_MOVE.bake(root);
     }
 
     public static LayerDefinition getTexturedModelData() {
@@ -75,8 +80,11 @@ public class TonkModel extends EntityModel<TonkRenderState> {
 
     public void setupAnim(TonkRenderState tonkRenderState) {
         super.setupAnim(tonkRenderState);
+
         this.applyHeadRotation(tonkRenderState.yRot, tonkRenderState.xRot);
+
         this.idleAnimation.apply(tonkRenderState.idleAnimationState, tonkRenderState.ageInTicks);
+        this.walkAnimation.applyWalk(tonkRenderState.walkAnimationPos, tonkRenderState.walkAnimationSpeed, 2.3F, 2.5F);
     }
 
     private void applyHeadRotation(float f, float g) {

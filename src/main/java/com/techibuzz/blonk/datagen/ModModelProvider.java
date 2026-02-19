@@ -33,5 +33,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(ModItems.HE_SHELL, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.NUCLEAR_SHELL, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.SMOKE_SHELL, ModelTemplates.FLAT_ITEM);
+
+        itemModelGenerator.generateFlatItem(ModItems.TONK_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
     }
 }

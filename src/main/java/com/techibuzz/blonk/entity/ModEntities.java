@@ -51,7 +51,7 @@ public class ModEntities {
     private static final ResourceKey<@NotNull EntityType<?>> TONK_KEY = ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(Blonk.MOD_ID, "tonk"));
     public static final EntityType<@NotNull Tonk> TONK = Registry.register(
             BuiltInRegistries.ENTITY_TYPE, TONK_KEY,
-            EntityType.Builder.<Tonk>of(Tonk::new, MobCategory.CREATURE).sized(10/16F, 10/16F).build(TONK_KEY)
+            EntityType.Builder.<Tonk>of(Tonk::new, MobCategory.CREATURE).sized(17/16F, 6 * 1.7F/16F).build(TONK_KEY)
     );
 
     public static void registerModEntities() {

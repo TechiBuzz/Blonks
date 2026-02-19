@@ -33,6 +33,8 @@ public class ModItemGroups {
                 entries.accept(ModItems.NUCLEAR_SHELL);
                 entries.accept(ModItems.SMOKE_SHELL);
 
+                entries.accept(ModItems.TONK_SPAWN_EGG);
+
                 entries.accept(ModBlocks.AMMO_RACK);
 
                 entries.accept(ModBlocks.BLONK);

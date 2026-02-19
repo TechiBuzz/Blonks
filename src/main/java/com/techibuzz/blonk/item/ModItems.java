@@ -1,6 +1,7 @@
 package com.techibuzz.blonk.item;
 
 import com.techibuzz.blonk.Blonk;
+import com.techibuzz.blonk.entity.ModEntities;
 import com.techibuzz.blonk.item.custom.*;
 
 import java.util.function.Function;
@@ -10,6 +11,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.SpawnEggItem;
 
 public class ModItems {
     public static final Item CASING = registerItem(
@@ -82,6 +84,12 @@ public class ModItems {
             "shell_testing_item",
             ShellTestingItem::new,
             new Item.Properties()
+    );
+
+    public static final Item TONK_SPAWN_EGG = registerItem(
+            "tonk_spawn_egg",
+            SpawnEggItem::new,
+            new Item.Properties().spawnEgg(ModEntities.TONK)
     );
 
     private static Item registerItem(String name, Function<Item.Properties, Item> itemFactory, Item.Properties settings) {
